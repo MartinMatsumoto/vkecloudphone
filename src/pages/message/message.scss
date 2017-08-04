@@ -1,0 +1,44 @@
+@import "theme/variables";
+
+$message_item_header_width: 60px;
+
+.message_item_header {
+    width: $message_item_header_width;
+    height: $message_item_header_width;
+    border-radius: $message_item_header_width / 2;
+    position: absolute;
+}
+
+.message_item_date {
+    position: absolute;
+    right: 16px;
+    line-height: 30px;
+    font-size: 12px;
+    color: $gray_text;
+}
+
+.message_item_content_container {
+    height: 60px;
+    float: left;
+    margin-left: 70px;
+}
+
+.message_item_newpoint {
+    position: absolute;
+    background-color: red;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    border: 0;
+    right: 8px;
+}
+
+.message_item_content_container .name {
+    line-height: 30px;
+}
+
+.message_item_content_container .content {
+    line-height: 30px;
+    font-size: 13px;
+    color: #939393;
+}

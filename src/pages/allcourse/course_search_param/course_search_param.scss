@@ -1,0 +1,7 @@
+@import "theme/variables";
+
+.course_search_content_container {
+    @extend .mycourse_content_color;
+    
+    margin-top: 15px;
+}

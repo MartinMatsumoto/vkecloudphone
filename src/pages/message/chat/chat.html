@@ -1,0 +1,66 @@
+<ion-header>
+
+	<ion-navbar color="primary">
+		<button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+		<ion-title class="yahei">
+			和{{targetUserName}}的对话
+		</ion-title>
+	</ion-navbar>
+
+</ion-header>
+<ion-content class="mycourse_content_color">
+	<ion-list *ngIf="!isAdmin">
+		<div *ngFor="let letter of letters">
+			<div class="chat_item" *ngIf="currUser.id == letter.receiverId">
+				<img class="chat_item_header" src={{urlHeader}}{{letter.senderHeaderPath}} />
+				<div class="chat_item_content_container">
+					<ion-card color="secondary" class="card">
+						<ion-card-content>
+							<p>{{letter.content}}</p>
+						</ion-card-content>
+					</ion-card>
+				</div>
+			</div>
+			
+			<div class="chat_item" *ngIf="currUser.id == letter.senderId">
+				<img class="chat_item_header_right" src={{urlHeader}}{{letter.senderHeaderPath}} />
+				<div class="chat_item_content_container_right">
+					<ion-card color="green" class="card">
+						<ion-card-content>
+							<p>{{letter.content}}</p>
+						</ion-card-content>
+					</ion-card>
+				</div>
+			</div>
+		</div>
+			
+	</ion-list>
+	
+	<ion-list *ngIf="isAdmin">
+			<div class="chat_item" *ngFor="let notice of notices">
+				<img class="chat_item_header" src="assets/img/temp_admin.jpg" />
+				<div class="chat_item_content_container">
+					<ion-card color="secondary" class="card">
+						<ion-card-content>
+							<p [innerHTML]="notice.content" id="course_view_praxis_content"></p>
+						</ion-card-content>
+					</ion-card>
+				</div>
+			</div>
+	</ion-list>
+	
+	<input id="course_view_praxis_header" value="{{urlHeader}}" style="display:none;"/>
+	<iframe src="assets/html/praxis_show.html" frameborder="0" style="display:none;"></iframe>
+</ion-content>
+<ion-footer *ngIf="!isAdmin">
+	<ion-toolbar>
+		<ion-input placeholder="说点什么吧" [(ngModel)]="message" ></ion-input>
+		<ion-buttons end>
+			<button ion-button icon-only (click)="sendMessage()">
+			    <ion-icon name="paper-plane"></ion-icon>
+	    	</button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-footer>

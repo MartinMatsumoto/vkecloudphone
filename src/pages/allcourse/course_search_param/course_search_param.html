@@ -1,0 +1,57 @@
+<ion-header>
+
+	<ion-navbar color="primary">
+		<ion-buttons left>
+			<button ion-button icon-only (click)="close()">
+				<ion-icon name="close"></ion-icon>
+			</button>
+		</ion-buttons>
+		<ion-title class="yahei">
+			课程搜索
+		</ion-title>
+		<ion-buttons end>
+			<button ion-button icon-only (click)="search()">
+		        <ion-icon name="checkmark"></ion-icon>
+		    </button>
+		</ion-buttons>
+	</ion-navbar>
+	
+	<ion-toolbar color="white">
+		<ion-searchbar animated="true" cancelButtonText="取消" placeholder="请输入关键字" [(ngModel)]="keyword"></ion-searchbar>
+	</ion-toolbar>
+
+</ion-header>
+<ion-content class="course_search_content_container">
+
+	<ion-item>
+		<ion-label>选择省</ion-label>
+		<ion-select [(ngModel)]="provinceSelect" multiple="false" (ionChange)="onProvinceSelect()">
+			<ion-option *ngFor="let province of provinces" value={{province.id}}>{{province.name}}</ion-option>
+			<ion-option value={{noselect}}>全部</ion-option>
+		</ion-select>
+	</ion-item>
+	
+	<ion-item>
+		<ion-label>选择市</ion-label>
+		<ion-select [(ngModel)]="citySelect" multiple="false" (ionChange)="onCitySelect()" disabled={{cityDisabled}}>
+			<ion-option *ngFor="let city of cities" value={{city.id}}>{{city.name}}</ion-option>
+			<ion-option value={{noselect}}>全部</ion-option>
+		</ion-select>
+	</ion-item>
+	
+	<ion-item>
+		<ion-label>选择区</ion-label>
+		<ion-select [(ngModel)]="zoneSelect" multiple="false" disabled={{zoneDisabled}} (ionChange)="onZoneSelect()">
+			<ion-option *ngFor="let zone of zones" value={{zone.id}}>{{zone.name}}</ion-option>
+			<ion-option value={{noselect}}>全部</ion-option>
+		</ion-select>
+	</ion-item>
+	
+	<ion-item>
+		<ion-label>选择学科</ion-label>
+		<ion-select [(ngModel)]="desciplineSelect" multiple="false">
+			<ion-option *ngFor="let descipline of desciplines" value={{descipline.code}}>{{descipline.name}}</ion-option>
+			<ion-option value={{noselect}}>全部</ion-option>
+		</ion-select>
+	</ion-item>
+</ion-content>

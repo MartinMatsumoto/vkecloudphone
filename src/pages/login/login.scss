@@ -1,0 +1,61 @@
+@import "theme/variables";
+
+$logininput_margintop: 170px;
+$login_logo_margintop: 50px;
+$login_logo_width: 240px;
+
+.container {
+    background-color: $primary_color;
+}
+
+.login_input_container {
+    margin-top: $logininput_margintop;
+}
+
+.login_input_container input {
+    color: $primary_color;
+    font-family: $global_font;
+    font-size: 13px;
+}
+
+.login_input_container input::-moz-placeholder {
+    color: $primary_color;
+}
+.login_input_container input:-ms-input-placeholder {
+    color: $primary_color;
+}
+
+.login_input_container input::-webkit-input-placeholder {
+    color: $primary_color;
+}
+
+.login_logo {
+    width: $login_logo_width;
+    left: 50%;
+    position: absolute;
+    margin: $login_logo_margintop 0 0 $login_logo_width / 2 * -1;
+}
+
+.login_forget_pwd {
+    float: right;
+    font-family: $global_font;
+    font-size: 13px;
+    color: white;
+}
+
+.login_button_container {
+    width: 100%;
+    padding: 16px;
+}
+
+.login_button {
+    width: 100%;
+    background-color: $secondary_color;
+    font-family: $global_font;
+}
+
+.login_remember_pwd {
+    @extend .login_forget_pwd;
+    background-color: transparent;
+    width: 175px;
+}

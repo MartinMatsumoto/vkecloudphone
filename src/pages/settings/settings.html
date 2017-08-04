@@ -1,0 +1,55 @@
+<ion-header>
+
+	<ion-navbar color="primary">
+		<ion-buttons left>
+			<button ion-button menuToggle>
+		    	<ion-icon name="menu"></ion-icon>
+		    </button>
+		</ion-buttons>
+		<ion-title class="yahei">
+			设置
+		</ion-title>
+	</ion-navbar>
+
+	<ion-toolbar color="white">
+		<ion-row>
+			<ion-col class="settings_center">
+				<button ion-button icon-only class="settings_header" (click)="capturePhoto()">
+			        <ion-icon name="camera"></ion-icon>
+		    	</button>
+			</ion-col>
+			<ion-col class="settings_center">
+				<button ion-button icon-only class="settings_header">
+		    	<img src={{headerPath}} />
+		    	</button>
+			</ion-col>
+			<ion-col class="settings_center">
+				<button ion-button icon-only class="settings_header" (click)="chooseImg()">
+			        <ion-icon name="images"></ion-icon>
+		    	</button>
+			</ion-col>
+		</ion-row>
+	</ion-toolbar>
+
+</ion-header>
+<ion-content class="course_search_content_container">
+
+	<button ion-item clear full detail-push class="yahei" (click)="modifyMyInfo()">
+    	<ion-icon name="contact" ></ion-icon>
+		<span class="main_menu_item_text">个人资料</span>
+  	</button>
+
+	<button ion-item clear full detail-push class="yahei" (click)="modifyPassword()">
+    	<ion-icon name="lock" ></ion-icon>
+		<span class="main_menu_item_text" >修改密码</span>
+  	</button>
+
+	<button ion-item clear full detail-push class="yahei" (click)="clearCache()">
+    	<ion-icon name="trash" ></ion-icon>
+		<span class="main_menu_item_text" >清除缓存</span>
+  	</button>
+
+	<ion-item class="settings_exit_text" no-lines (click)="quit()">
+		<span color="danger">退出登录</span>
+	</ion-item>
+</ion-content>

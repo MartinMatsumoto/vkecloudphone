@@ -1,0 +1,23 @@
+<ion-header>
+	<ion-navbar color="primary">
+		<ion-title class="yahei">忘记密码</ion-title>
+	</ion-navbar>
+</ion-header>
+<ion-content>
+	<ion-list class="forgetpwd_list_top">
+		<ion-item>
+			<ion-label floating class="yahei font13px">用户名</ion-label>
+			<ion-input type="text" class="yahei font13px" [(ngModel)]="username"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label floating class="yahei font13px">邮箱</ion-label>
+			<ion-input type="email" class="yahei font13px" [(ngModel)]="email"></ion-input>
+		</ion-item>
+		<ion-item style="text-align: center;" no-lines>
+			<button ion-button color="secondary_color" round (click)="sendEmail()">
+				<ion-icon name="mail"></ion-icon>
+				<span class="yahei send_email_text">发送邮件</span>
+			</button>
+		</ion-item>
+	</ion-list>
+</ion-content>

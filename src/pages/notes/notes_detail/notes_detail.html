@@ -1,0 +1,45 @@
+<ion-header>
+
+	<ion-navbar color="primary">
+		<button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+		<ion-title class="yahei">
+			笔记详情
+		</ion-title>
+	</ion-navbar>
+
+</ion-header>
+<ion-content>
+	<div class="notes_detail_container">
+		<ion-item no-lines>
+			<ion-avatar item-left>
+				<img src={{urlHeader}}{{note.headImage}}>
+			</ion-avatar>
+			<h2>{{note.name}}</h2>
+			<p style="color:#999;font-size: 13px;">{{note.createDate}}</p>
+		</ion-item>
+	
+		<img *ngIf="note.imagePath && note.imagePath != ''" class="course_detail_item_img" src={{urlHeader}}{{note.imagePath}} />
+		<span style="padding: 0 16px 0 16px;">{{note.content}}</span>
+	</div>
+	
+</ion-content>
+<ion-footer *ngIf="canModify">
+	<ion-toolbar>
+	<ion-row>
+		<ion-col class="notes_detail_column">
+			<button ion-button icon-left clear small (click)="delete()">
+				<ion-icon name="trash"></ion-icon>
+				<div>删除</div>
+			</button>
+		</ion-col>
+		<ion-col class="notes_detail_column">
+			<button ion-button icon-left clear small (click)="modify()">
+			    <ion-icon name="create"></ion-icon>
+			    <div>编辑</div>
+		    </button>
+		</ion-col>
+	</ion-row>
+	</ion-toolbar>
+</ion-footer>

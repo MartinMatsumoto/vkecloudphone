@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body {
+				padding: 0px;
+				margin: 0px;
+			}
+		</style>
+	</head>
+
+	<body>
+	</body>
+	<script type="text/javascript">
+		var content = parent.document.getElementById("course_view_praxis_content");
+		var httpHeader = parent.document.getElementById("course_view_praxis_header").value;
+		var imgs = content.getElementsByTagName("img");
+		
+		var changeSrc = function(img) {
+			var originSrc = img.getAttribute("src");
+			var src = httpHeader + originSrc;
+			img.setAttribute("src",src);
+		}
+		
+		if(imgs && imgs.length > 0) {
+			for(var i = 0; i < imgs.length; i++) {
+				var img = imgs[i];
+				changeSrc(img);
+			}
+		}
+		
+	</script>
+
+</html>

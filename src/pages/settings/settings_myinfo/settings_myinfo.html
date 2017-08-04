@@ -1,0 +1,41 @@
+<ion-header>
+
+	<ion-navbar color="primary">
+		<ion-title class="yahei">
+			修改资料
+		</ion-title>
+		<ion-buttons end>
+			<button ion-button icon-only (click)="confirm()">
+			    <ion-icon name="checkmark"></ion-icon>
+	    	</button>
+		</ion-buttons>
+	</ion-navbar>
+	
+</ion-header>
+<ion-content class="course_search_content_container">
+
+	<ion-item>
+		<ion-label>昵称</ion-label>
+		<ion-input type="text" [(ngModel)]="realName"></ion-input>
+	</ion-item>
+	<ion-item>
+		<ion-label>性别</ion-label>
+		<ion-select [(ngModel)]="gender">
+			<ion-option value="1">女</ion-option>
+			<ion-option value="2">男</ion-option>
+		</ion-select>
+	</ion-item>
+	<ion-item>
+		<ion-label>角色</ion-label>
+		<ion-input type="text" disabled value="学生"></ion-input>
+	</ion-item>
+	
+	<ion-item style="margin-top: 20px;">
+		<ion-label>邮箱</ion-label>
+		<ion-input type="text" [(ngModel)]="email"></ion-input>
+	</ion-item>
+	<ion-item text-wrap>
+		<ion-label>个性签名</ion-label>
+		<ion-input type="text" [(ngModel)]="introduction"></ion-input>
+	</ion-item>
+</ion-content>

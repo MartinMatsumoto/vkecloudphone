@@ -1,0 +1,51 @@
+<ion-header>
+
+	<ion-navbar color="primary">
+		<ion-title class="yahei">
+			习题解析
+		</ion-title>
+	</ion-navbar>
+	
+	<ion-toolbar color="white" class="praxis_resolve_toolbar">
+		<ion-segment [(ngModel)]="praxis_resolve" color="secondary" mode="ios">
+			<ion-segment-button value="answer_resolve">
+				解析答案
+			</ion-segment-button>
+			<ion-segment-button value="vke_resolve" (ionSelect)="showVkeResolve()">
+				解析微课
+			</ion-segment-button>
+		</ion-segment>
+	</ion-toolbar>
+
+</ion-header>
+<ion-content>
+	<div [ngSwitch]="praxis_resolve">
+		
+		<ion-list *ngSwitchCase="'answer_resolve'">
+			<ion-item-divider class="course_view_praxis_divider_text_color" no-lines>
+				答案
+			</ion-item-divider>
+			<ion-item no-lines>
+				{{showAnswer()}}
+			</ion-item>
+		
+			<ion-item-divider class="course_view_praxis_divider_text_color" no-lines>
+				解析
+			</ion-item-divider>
+		
+			<ion-item no-lines>
+				{{showStringResolve()}}
+			</ion-item>
+		
+		</ion-list>
+	
+		<ion-list *ngSwitchCase="'vke_resolve'">
+			<ion-card *ngFor="let vke of vkeResolves" (click)=playVke(vke.id)>
+				<img src={{urlHeader}}{{vke.cover}} />
+				<div class="card-title yahei">{{vke.name}}</div>
+				<div class="card-subtitle yahei">{{vke.timeStr}}</div>
+			</ion-card>
+		</ion-list>
+		
+	</div>
+</ion-content>

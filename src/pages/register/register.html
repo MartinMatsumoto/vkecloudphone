@@ -1,0 +1,37 @@
+<ion-header>
+	<ion-navbar color="primary">
+		<ion-title class="yahei">注册</ion-title>
+		<ion-buttons end>
+			<button ion-button icon-only (click)="registerCommit()">
+        		<ion-icon name="checkmark"></ion-icon>
+			</button>
+		</ion-buttons>
+	</ion-navbar>
+</ion-header>
+<ion-content>
+	<div class="register_logo_container">
+			<button ion-button icon-only round color="danger" class="close_icon" (click)="removeHead()" *ngIf=hasHeader>
+	    		<ion-icon name="close"></ion-icon>
+			</button>
+		<img src="{{registerForm.headerPath}}" class="register_logo" (click)="pickImg()" />
+	</div>
+
+	<ion-list class="register_list_top">
+		<ion-item>
+			<ion-label floating class="yahei font13px">用户名</ion-label>
+			<ion-input type="text" class="yahei font13px" [(ngModel)]="registerForm.account"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label floating class="yahei font13px">昵称</ion-label>
+			<ion-input type="text" class="yahei font13px" [(ngModel)]="registerForm.nickname"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label floating class="yahei font13px">邮箱</ion-label>
+			<ion-input type="email" class="yahei font13px" [(ngModel)]="registerForm.email"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label floating class="yahei font13px">密码</ion-label>
+			<ion-input type="password" class="yahei font13px" [(ngModel)]="registerForm.password"></ion-input>
+		</ion-item>
+	</ion-list>
+</ion-content>

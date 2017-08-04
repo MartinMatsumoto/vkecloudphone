@@ -1,0 +1,118 @@
+<ion-header>
+
+	<ion-navbar color="primary" style="display:none;">
+		<ion-title class="yahei">
+			课程详情
+		</ion-title>
+	</ion-navbar>
+	
+	<ion-toolbar color="white" class="course_detail_segment">
+		<button ion-button small icon-only round color="secondary" class="course_detail_back" (click)="back()">
+			<ion-icon name="arrow-round-back"></ion-icon>
+		</button>
+		<div *ngIf="showCover">
+			<img isImgsUpdatable="false" width="100%" height="{{playerHeight}}" src="{{coverPath}}" />
+			<button *ngIf="showPlayBtn()" ion-button icon-only round color="secondary" class="course_detail_play" (click)="play()">
+				<ion-icon name="play"></ion-icon>
+			</button>
+			<button *ngIf="showEditBtn()" ion-button icon-only round color="secondary" class="course_detail_play" (click)="viewDoc()">
+				<ion-icon name="search"></ion-icon>
+			</button>
+			<button *ngIf="showScanBtn()" ion-button icon-only round color="secondary" class="course_detail_play" (click)="viewPraxis()">
+				<ion-icon name="md-create"></ion-icon>
+			</button>
+		</div>
+		<iframe *ngIf="!showCover" [src]="playerPath" width="100%" height="{{playerHeight}}px" frameborder="0"></iframe>
+		
+		<!-- Segment in content -->
+		<ion-segment [(ngModel)]="course_detail" color="secondary" mode="md">
+			<ion-segment-button value="catalogue" (ionSelect)="changeCatalogue()">
+				目录
+			</ion-segment-button>
+			<ion-segment-button value="question" (ionSelect)="changeQuestion()">
+				讨论
+			</ion-segment-button>
+			<ion-segment-button value="notes" (ionSelect)="changeNotes()">
+				笔记
+			</ion-segment-button>
+			<ion-segment-button value="detail" (ionSelect)="changeDetail()">
+				详情
+			</ion-segment-button>
+		</ion-segment>
+	</ion-toolbar>
+
+</ion-header>
+<ion-content>
+	<div [ngSwitch]="course_detail">
+		<ion-list *ngSwitchCase="'catalogue'">
+			<ion-item *ngFor="let catalogueItem of catalogueItems; let i = index" (click)="onCatalogueItemClick(catalogueItem,i)" color="{{getColor(catalogueItem)}}">
+				<div class="course_detail_catalogue_{{catalogueItem.level}}">
+					<ion-icon color="primary" *ngIf="catalogueItem.isContent" name={{getItemIcon(catalogueItem.type)}} class="course_detail_catalogue_icon"></ion-icon>
+					<span *ngIf="catalogueItem.isContent" class="course_detail_catalogue_item">{{catalogueItem.name}}</span>
+					<span *ngIf="!catalogueItem.isContent">{{catalogueItem.name}}</span>
+				</div>
+			</ion-item>
+		</ion-list>
+	
+		<ion-list *ngSwitchCase="'question'">
+			<ion-item text-wrap *ngFor="let question of questions; let i = index" (click)="onQuestionClick(question)">
+				<img class="course_detail_item_header" src={{urlHeader}}{{question.headImage}} />
+				<h2 style="font-size: 15px;" class="course_detail_item_name">{{question.name}}</h2>
+				<span class="course_detail_item_date">{{question.createDate}}</span>
+				<img *ngIf="question.imagePath && question.imagePath != ''" class="course_detail_item_img" src={{urlHeader}}{{question.imagePath}} />
+				<p>{{question.content}}</p>
+				<ion-row class="course_detail_item_row">
+					<ion-col>
+						<span>浏览({{question.viewNum}})</span>
+						<ion-icon name="eye"></ion-icon>
+					</ion-col>
+					<ion-col>
+						<span>回复({{question.replyNum}})</span>
+						<ion-icon name="chatboxes"></ion-icon>
+					</ion-col>
+				</ion-row>
+			</ion-item>
+			<ion-infinite-scroll (ionInfinite)="loadQuestions($event)">
+				<ion-infinite-scroll-content loadingSpinner="ios" loadingText="加载中，请稍等。">
+				</ion-infinite-scroll-content>
+			</ion-infinite-scroll>
+		</ion-list>
+		
+		<ion-list *ngSwitchCase="'notes'">
+			<ion-item text-wrap *ngFor="let note of notes; let i = index" (click)="onNotesClick(note)">
+				<img class="course_detail_item_header" src={{urlHeader}}{{note.headImage}} />
+				<h2 style="font-size: 15px;" class="course_detail_item_name">{{note.name}}</h2>
+				<span class="course_detail_item_date">{{note.createDate}}</span>
+				<img *ngIf="note.imagePath && note.imagePath != ''" class="course_detail_item_img" src={{urlHeader}}{{note.imagePath}} />
+				<p>{{note.content}}</p>
+			</ion-item>
+			<ion-infinite-scroll (ionInfinite)="loadNotes($event)">
+				<ion-infinite-scroll-content loadingSpinner="ios" loadingText="加载中，请稍等。">
+				</ion-infinite-scroll-content>
+			</ion-infinite-scroll>
+		</ion-list>
+		
+		<div *ngSwitchCase="'detail'">
+			<ion-list>
+				<ion-item>
+					{{course.name}}
+				</ion-item>
+				<ion-item>
+					<ion-label fixed>科目</ion-label>
+					<ion-input type="text" value="{{course.majorName}}" disabled="true"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label fixed>年级</ion-label>
+					<ion-input type="text" value="{{course.gradeName}}" disabled="true"></ion-input>
+				</ion-item>
+				<ion-item no-lines class="mycourse_content_intro_title">
+					课程简介
+				</ion-item>
+					<div class="mycourse_content_intro">
+						{{course.introduction}}
+					</div>
+			</ion-list>
+		</div>
+	</div>
+	
+</ion-content>

@@ -1,0 +1,7 @@
+@import "theme/variables";
+
+.notes_item_header {
+    width: $message_item_header_width;
+    height: $message_item_header_width;
+    border-radius: $message_item_header_width / 2;
+}

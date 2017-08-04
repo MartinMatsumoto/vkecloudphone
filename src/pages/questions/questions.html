@@ -1,0 +1,39 @@
+<ion-header>
+
+	<ion-navbar color="primary">
+		<button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+		<ion-title class="yahei">
+			我的讨论
+		</ion-title>
+	</ion-navbar>
+
+</ion-header>
+<ion-content class="mycourse_content_color">
+	<ion-card *ngFor="let question of questions" (click)="showDetail(question)">
+		<ion-item>
+			<ion-avatar item-left>
+				<img src={{urlHeader}}{{question.headImage}}>
+			</ion-avatar>
+			<h2>{{question.name}}</h2>
+			<p>{{question.createDate}}</p>
+		</ion-item>
+	
+		<img *ngIf="question.imagePath && question.imagePath != ''" class="course_detail_item_img" src={{urlHeader}}{{question.imagePath}} />
+		<ion-card-content>
+			{{question.content}}
+		</ion-card-content>
+		<ion-item right>
+			<div class="question_item_cut_container">
+				<ion-icon name="cut" item-left small></ion-icon>
+				<p>{{formatPauseTime(question.pauseTime)}}</p>
+			</div>
+		</ion-item>
+	</ion-card>
+	
+	<ion-infinite-scroll (ionInfinite)="loadQuestions($event)">
+		<ion-infinite-scroll-content loadingSpinner="ios" loadingText="加载中，请稍等。">
+		</ion-infinite-scroll-content>
+	</ion-infinite-scroll>
+</ion-content>

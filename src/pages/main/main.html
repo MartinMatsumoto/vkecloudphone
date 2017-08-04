@@ -1,0 +1,51 @@
+<ion-menu [content]="mycontent">
+	<ion-content class="dark_bg">
+		<div class="main_menu_header" style="background: url('assets/img/menu_header.jpg');">
+		<ion-row>
+			<ion-col class="head_position" >
+				<img class="header" src={{user.getRealIconPath()}}/>
+			</ion-col>
+			<ion-col class="nickname_style yahei" >
+				<span>{{user.realName}}</span>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col class="head_position intro_color yahei" >
+				{{user.introduction}}
+			</ion-col>
+		</ion-row>
+		</div>
+		<ion-list>
+			<button ion-item color="dark" clear full detail-push class="yahei" no-lines (click)="toogleMyCourse()">
+		    	<ion-icon name="school"></ion-icon>
+				<span class="main_menu_item_text">我的课程</span>
+		  	</button>
+		  	<button ion-item color="dark" clear full detail-push class="yahei" no-lines (click)="toogleAllCourse()">
+		    	<ion-icon name="bookmarks"></ion-icon>
+				<span class="main_menu_item_text">全部课程</span>
+		  	</button>
+		  	<button ion-item color="dark" clear full detail-push class="yahei" no-lines (click)="toogleMessage()">
+		    	<ion-icon name="mail"></ion-icon>
+				<span class="main_menu_item_text">我的消息</span>
+		  	</button>
+		  	<button ion-item color="dark" clear full detail-push class="yahei" no-lines (click)="toogleQuestions()">
+		    	<ion-icon name="chatbubbles"></ion-icon>
+				<span class="main_menu_item_text">我的讨论</span>
+		  	</button>
+		  	<button ion-item color="dark" clear full detail-push class="yahei" no-lines (click)="toogleNotes()">
+		    	<ion-icon name="clipboard"></ion-icon>
+				<span class="main_menu_item_text">我的笔记</span>
+		  	</button>
+		  	<button ion-item color="dark" clear full detail-push class="yahei" no-lines (click)="toogleFollow()">
+		    	<ion-icon name="heart"></ion-icon>
+				<span class="main_menu_item_text">我的关注</span>
+		  	</button>
+		  	<button ion-item color="dark" clear full detail-push class="yahei" no-lines (click)="toogleSettings()">
+		    	<ion-icon name="settings"></ion-icon>
+				<span class="main_menu_item_text">设置中心</span>
+		  	</button>
+		</ion-list>
+	</ion-content>
+</ion-menu>
+
+<ion-nav #mycontent [root]="rootPage"></ion-nav>

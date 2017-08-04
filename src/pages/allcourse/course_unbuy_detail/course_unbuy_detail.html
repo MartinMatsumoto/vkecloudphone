@@ -1,0 +1,86 @@
+<ion-header>
+
+	<ion-navbar color="primary" style="display:none;">
+		<ion-title class="yahei">
+			课程概要
+		</ion-title>
+	</ion-navbar>
+	
+	<ion-toolbar color="white" class="course_detail_segment">
+		<button ion-button small icon-only round color="secondary" class="course_detail_back" (click)="back()">
+			<ion-icon name="arrow-round-back"></ion-icon>
+		</button>
+		<div>
+			<img isImgsUpdatable="false" width="100%" height="{{playerHeight}}" src="{{coverPath}}" />
+			<button *ngIf="!hasBuy && course.salePrice <= 0 && course.publishScope == 1" ion-button color="secondary" class="course_unbuydetail_play" icon-left (click)="enjoyCourse()">
+				<ion-icon name="contacts"></ion-icon>
+				加入课程
+			</button>
+			
+			<button *ngIf="hasBuy" ion-button color="secondary" class="course_unbuydetail_play" icon-left (click)="startCourse()">
+				<ion-icon name="book"></ion-icon>
+				开始学习
+			</button>
+		</div>
+		
+		<!-- Segment in content -->
+		<ion-segment [(ngModel)]="course_detail" color="secondary" mode="md">
+			<ion-segment-button value="catalogue" (ionSelect)="changeCatalogue()">
+				目录
+			</ion-segment-button>
+			<ion-segment-button value="teachers">
+				讲师
+			</ion-segment-button>
+			<ion-segment-button value="detail">
+				详情
+			</ion-segment-button>
+		</ion-segment>
+	</ion-toolbar>
+
+</ion-header>
+<ion-content>
+	<div [ngSwitch]="course_detail">
+		<ion-list *ngSwitchCase="'catalogue'">
+			<ion-item *ngFor="let catalogueItem of catalogueItems; let i = index" (click)="onCatalogueItemClick(catalogueItem,i)" color="{{getColor(catalogueItem)}}">
+				<div class="course_detail_catalogue_{{catalogueItem.level}}">
+					<ion-icon color="primary" *ngIf="catalogueItem.isContent" name={{getItemIcon(catalogueItem.type)}} class="course_detail_catalogue_icon"></ion-icon>
+					<span *ngIf="catalogueItem.isContent" class="course_detail_catalogue_item">{{catalogueItem.name}}</span>
+					<span *ngIf="!catalogueItem.isContent">{{catalogueItem.name}}</span>
+				</div>
+			</ion-item>
+		</ion-list>
+	
+		<ion-list *ngSwitchCase="'teachers'">
+			<ion-item *ngFor="let teacher of course.members">
+				<ion-avatar item-left>
+					<img src={{urlHeader}}{{teacher.iconPath}}>
+				</ion-avatar>
+				<h2>{{teacher.realName}}</h2>
+				<p>{{teacher.organName}}</p>
+			</ion-item>
+		</ion-list>
+		
+		<div *ngSwitchCase="'detail'">
+			<ion-list>
+				<ion-item>
+					{{course.name}}
+				</ion-item>
+				<ion-item>
+					<ion-label fixed>科目</ion-label>
+					<ion-input type="text" value="{{course.majorName}}" disabled="true"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label fixed>年级</ion-label>
+					<ion-input type="text" value="{{course.gradeName}}" disabled="true"></ion-input>
+				</ion-item>
+				<ion-item no-lines class="mycourse_content_intro_title">
+					课程简介
+				</ion-item>
+					<div class="mycourse_content_intro">
+						{{course.introduction}}
+					</div>
+			</ion-list>
+		</div>
+	</div>
+	
+</ion-content>

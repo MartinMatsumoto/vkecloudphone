@@ -1,0 +1,31 @@
+<ion-header>
+
+	<ion-navbar color="primary">
+		<ion-buttons left>
+			<button ion-button icon-only (click)="close()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+		</ion-buttons>
+		<ion-title class="yahei">
+			编辑笔记
+		</ion-title>
+		<ion-buttons end>
+			<button ion-button icon-only (click)="modify()">
+		    	<ion-icon name="checkmark"></ion-icon>
+		    </button>
+		</ion-buttons>
+	</ion-navbar>
+</ion-header>
+<ion-content>
+
+	<div class="notes_detail_container">
+		<ion-textarea class="notes_modify_textarea" placeholder="请输入笔记文字" [(ngModel)]="content"></ion-textarea>
+		
+		<button ion-button clear small style="padding : 0px;" (click)="pickImg()">
+	    	<ion-icon name="images"></ion-icon>
+	    	<span padding>上传图片</span>
+	    </button>
+		<img src={{contentImg}} *ngIf="hasPic" />
+		
+	</div>
+</ion-content>

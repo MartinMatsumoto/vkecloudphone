@@ -1,0 +1,54 @@
+<ion-header>
+
+	<ion-navbar color="primary">
+		<button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+		<ion-title class="yahei">
+			我的消息
+		</ion-title>
+		<ion-buttons end>
+			<button ion-button icon-only (click)="openFollowMenu()">
+			    <ion-icon name="add"></ion-icon>
+	    	</button>
+		</ion-buttons>
+	</ion-navbar>
+
+</ion-header>
+<ion-content class="mycourse_content_color">
+	<ion-list>
+		<ion-item-sliding #item *ngIf="noticeLast" (click)="showAdmin(notice)">
+			<ion-item>
+				<img class="message_item_header" src="assets/img/temp_admin.jpg" />
+				<span class="message_item_date">{{noticeLast.modifyDate}}</span>
+				<div class="message_item_content_container">
+					<span class="yahei name">{{adminName}}</span>
+					<br />
+					<span class="content yahei">{{noticeLast.content}}</span>
+				</div>
+			</ion-item>
+	
+			<ion-item-options side="right">
+				<button ion-button color="green">查看</button>
+			</ion-item-options>
+		</ion-item-sliding>
+		
+		<ion-item-sliding #item *ngFor="let letter of letters" (click)="reply(letter)">
+			<ion-item>
+				<img class="message_item_header" src={{urlHeader}}{{letter.iconPath}} />
+				<span class="message_item_date">{{letter.sendDate}}</span>
+				<div class="message_item_newpoint" *ngIf="letter.rqty > 0"></div>
+				<div class="message_item_content_container">
+					<span class="yahei name">{{letter.realName}}</span>
+					<br />
+					<span class="content yahei">{{letter.content}}</span>
+				</div>
+			</ion-item>
+	
+			<ion-item-options side="right">
+				<button ion-button color="green">回复</button>
+			</ion-item-options>
+		</ion-item-sliding>
+		
+	</ion-list>
+</ion-content>

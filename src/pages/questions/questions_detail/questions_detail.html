@@ -1,0 +1,56 @@
+<ion-header>
+
+	<ion-navbar color="primary">
+		<button ion-button menuToggle>
+	    	<ion-icon name="menu"></ion-icon>
+	    </button>
+		<ion-title class="yahei">
+			讨论详情
+		</ion-title>
+		<ion-buttons end>
+			<button ion-button icon-only (click)="reply()">
+			    <ion-icon name="text"></ion-icon>
+	    	</button>
+		</ion-buttons>
+	</ion-navbar>
+
+</ion-header>
+<ion-content>
+	<div class="notes_detail_container">
+		<ion-item no-lines>
+			<ion-avatar item-left>
+				<img src={{urlHeader}}{{question.headImage}}>
+			</ion-avatar>
+			<h2>{{question.name}}</h2>
+			<p style="color:#999;font-size: 13px;">{{question.createDate}}</p>
+		</ion-item>
+	
+		<img *ngIf="question.imagePath && question.imagePath != ''" class="course_detail_item_img" src={{urlHeader}}{{question.imagePath}} />
+		<ion-item no-lines>
+			<p style="display: inline;line-height: 40px;">{{question.contentName}}</p>
+			<div class="question_item_cut_container">
+				<ion-icon name="cut" item-left small></ion-icon>
+				<p>11:27</p>
+			</div>
+		</ion-item>
+		<span style="padding: 0 16px 0 16px;">{{question.content}}</span>
+	</div>
+	
+	<ion-list>
+		<ion-list-header>
+			回复列表
+		</ion-list-header>
+		<ion-item text-wrap *ngFor="let reply of replies">
+			<img class="course_detail_item_header" src={{urlHeader}}{{reply.headImage}} />
+			<h2 style="font-size: 15px;" class="course_detail_item_name">{{question.name}}</h2>
+			<span class="course_detail_item_date">{{question.createDate}}</span>
+			<img *ngIf="reply.imagePath && reply.imagePath != ''" class="course_detail_item_img" src={{urlHeader}}{{reply.imagePath}} />
+			<p>{{reply.content}}</p>
+		</ion-item>
+		<ion-infinite-scroll (ionInfinite)="loadReply($event)">
+			<ion-infinite-scroll-content loadingSpinner="ios" loadingText="加载中，请稍等。">
+			</ion-infinite-scroll-content>
+		</ion-infinite-scroll>
+	</ion-list>
+	
+</ion-content>

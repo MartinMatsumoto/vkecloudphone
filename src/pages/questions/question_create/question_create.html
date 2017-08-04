@@ -1,0 +1,31 @@
+<ion-header>
+
+	<ion-navbar color="primary">
+		<ion-title class="yahei">
+			创建答疑
+		</ion-title>
+		<ion-buttons end>
+			<button ion-button icon-only (click)="reply()">
+		    	<ion-icon name="checkmark"></ion-icon>
+		    </button>
+		</ion-buttons>
+	</ion-navbar>
+</ion-header>
+<ion-content>
+
+	<div class="notes_detail_container">
+		<ion-textarea class="notes_modify_textarea" placeholder="请输入答疑内容" [(ngModel)]="content"></ion-textarea>
+		
+		<input type="hidden" [(ngModel)]="imgBase64" />
+		<button ion-button clear small style="padding : 0px;" (click)="pickImg()">
+		    	<ion-icon name="images"></ion-icon>
+		    	<span padding>上传图片</span>
+		    </button>
+		<span *ngIf="hasPic">
+			<button ion-button icon-only round color="danger" (click)="removeHead()" class="notes_modify_removeimg_btn">
+	    		<ion-icon name="close"></ion-icon>
+			</button>
+			<img src={{contentImg}} />
+		</span>
+	</div>
+</ion-content>

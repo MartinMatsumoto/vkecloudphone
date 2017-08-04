@@ -1,0 +1,47 @@
+<ion-header>
+
+	<ion-navbar color="primary">
+		<button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+		<ion-title class="yahei">
+			练习题
+		</ion-title>
+		<ion-buttons end>
+			<button ion-button icon-only (click)="showMenu($event)">
+			    <ion-icon name="more"></ion-icon>
+	    	</button>
+		</ion-buttons>
+	</ion-navbar>
+
+</ion-header>
+<ion-content class="course_view_praxis_content_color">
+	<ion-list>
+	
+		<ion-item-divider class="course_view_praxis_divider_text_color">
+			题干
+		</ion-item-divider>
+		<div class="course_view_praxis_content_container">
+			<div [innerHTML]=getContent() id="course_view_praxis_content">
+			</div>
+			
+			<input id="course_view_praxis_header" value="{{httpHeader}}" style="display:none;"/>
+			<iframe src="assets/html/praxis_show.html" frameborder="0" style="display:none;"></iframe>
+		</div>
+	
+		<ion-item-divider class="course_view_praxis_divider_text_color" *ngIf="hasOpinion">
+			{{intentText}}
+		</ion-item-divider>
+	
+		<ion-item *ngIf="hasOpinion">
+			<button ion-button round small color="{{getOptionColor(option)}}" *ngFor="let option of praxis.options" class="course_view_praxis_options" (click)="chooseOption(option)" [disabled]="submitDisabled">{{option.lable}}</button>
+			<button ion-button item-right color="secondary" class="course_view_praxis_submit" padding [disabled]=submitDisabled (click)="doExercise()">提交</button>
+		</ion-item>
+	
+	</ion-list>
+</ion-content>
+<ion-footer *ngIf="!hasOpinion">
+	<button ion-button full (click)="collectIntoWrong()" style="margin: 0px;" [disabled]=isInWrongDisabled>
+		{{isInWrongText}}
+	</button>
+</ion-footer>

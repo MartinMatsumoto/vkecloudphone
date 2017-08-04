@@ -1,0 +1,18 @@
+@import "theme/variables";
+
+$settings_header_width: 80px;
+
+.settings_center {
+    text-align: center;
+}
+
+.settings_header {
+    width: $settings_header_width;
+    height: $settings_header_width;
+    border-radius: $settings_header_width / 2;
+}
+
+.settings_exit_text {
+    margin-top: 20px;
+    text-align: center;
+}

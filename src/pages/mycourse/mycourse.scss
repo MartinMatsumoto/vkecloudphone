@@ -1,0 +1,24 @@
+@import "theme/variables";
+
+.card-title {
+    padding: 5px;
+    color : $dark;
+}
+
+.card-subtitle {
+    padding: 5px;
+    color : $dark;
+}
+
+.mycourse_content_color {
+    background-color: $light;
+}
+
+.mycourse_content_intro_title {
+    color : #999;
+}
+
+.mycourse_content_intro {
+    padding-left: 50px;
+    color : #999;
+}

@@ -1,0 +1,37 @@
+<ion-header>
+
+	<ion-navbar color="primary">
+		<button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+		<ion-title class="yahei">
+			我的课程
+		</ion-title>
+	</ion-navbar>
+
+</ion-header>
+<ion-content class="mycourse_content_color">
+	<ion-card *ngFor="let course of courses" (click)=openCourse(course)>
+		<img src={{urlHeader}}{{course.commodityCourseTo.cover}} />
+		<div class="card-title yahei">{{course.commodityCourseTo.name}}</div>
+		<div class="card-subtitle yahei">{{course.commodityCourseTo.creatorRealName}}</div>
+		<ion-row>
+			<ion-col>
+				<button ion-button icon-left clear small>
+					<ion-icon name="checkmark-circle"></ion-icon>
+					<div>{{course.completeQuantity}}</div>
+				</button>
+			</ion-col>
+			<ion-col>
+				<button ion-button icon-left clear small>
+					<ion-icon name="clipboard"></ion-icon>
+					<div>{{course.totalQuantity}}</div>
+				</button>
+			</ion-col>
+		</ion-row>
+	</ion-card>
+	<ion-infinite-scroll (ionInfinite)="loadmore($event)">
+		<ion-infinite-scroll-content loadingSpinner="ios" loadingText="加载中，请稍等。">
+		</ion-infinite-scroll-content>
+	</ion-infinite-scroll>
+</ion-content>

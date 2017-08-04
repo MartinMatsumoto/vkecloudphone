@@ -1,0 +1,12 @@
+@import "theme/variables";
+
+
+.notes_modify_textarea {
+    height: 180px;
+    border: 1px solid $primary_color;
+    border-radius: 5px;
+}
+
+.notes_modify_textarea textarea {
+    height: 300px;
+}

@@ -1,0 +1,48 @@
+<ion-header>
+
+	<ion-navbar color="primary">
+		<button ion-button menuToggle>
+		  <ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title class="yahei">
+			我的关注
+		</ion-title>
+		<ion-buttons end>
+			<button ion-button icon-only (click)="openSearchMenu()">
+			    <ion-icon name="search"></ion-icon>
+	    	</button>
+		</ion-buttons>
+	</ion-navbar>
+
+</ion-header>
+<ion-content class="mycourse_content_color">
+	<ion-list>
+		<ion-item-sliding *ngFor="let follow of follows">
+			<ion-item>
+				<img class="message_item_header" src={{urlHeader}}{{follow.following.iconPath}} />
+				<div class="message_item_content_container">
+					<span class="yahei name">{{follow.following.realName}}</span>
+					<span class="content yahei follow_play_icon_container"><ion-icon name="play" small color="secondary" class="follow_play_icon"></ion-icon>{{follow.maxVkeId}}</span>
+					<br />
+					<span class="content yahei">{{follow.following.organization}}</span>
+					<span class="content yahei">{{follow.following.clazzName}}</span>
+				</div>
+			</ion-item>
+	
+			<ion-item-options side="right">
+				<button ion-button (click)="sendMessage(follow)" color="green">
+					<ion-icon name="chatbubbles"></ion-icon>
+					发送消息
+				</button>
+				<button ion-button (click)="cancelFollow(follow)" color="danger">
+					<ion-icon name="remove-circle"></ion-icon>
+					取消关注
+				</button>
+			</ion-item-options>
+		</ion-item-sliding>
+		<ion-infinite-scroll (ionInfinite)="loadFollows($event)">
+			<ion-infinite-scroll-content loadingSpinner="ios" loadingText="加载中，请稍等。">
+			</ion-infinite-scroll-content>
+		</ion-infinite-scroll>
+	</ion-list>
+</ion-content>

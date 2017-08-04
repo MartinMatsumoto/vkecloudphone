@@ -1,0 +1,102 @@
+@import "theme/variables";
+
+$course_detail_item_header_width: 40px;
+
+.course_detail_segment {
+    padding: 0;
+}
+
+.course_detail_back {
+    position: absolute;
+    margin: 10px;
+    height: 30px;
+    width: 30px;
+}
+
+.course_detail_play {
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -25px;
+    margin-top: -50px;
+}
+
+.course_detail_catalogue_1 {
+    font-size: 17px;
+    color: #666;
+}
+
+.course_detail_catalogue_2 {
+    padding-left: 30px;
+    font-size: 16px;
+    color: #666;
+}
+
+.course_detail_catalogue_3 {
+    padding-left: 60px;
+    font-size: 15px;
+    color: #666;
+}
+
+.course_detail_catalogue_4 {
+    padding-left: 90px;
+    font-size: 14px;
+    color: #666;
+}
+
+.course_detail_catalogue_item {
+    font-size: 14px;
+    color: #666;
+}
+
+.course_detail_catalogue_icon {
+    margin-right: 10px;
+}
+
+.course_detail_item_header {
+    width: $course_detail_item_header_width;
+    height: $course_detail_item_header_width;
+    border-radius: $course_detail_item_header_width / 2;
+    float: left;
+}
+
+.course_detail_item_name {
+    line-height: 40px;
+    padding-left: 55px;
+}
+
+.course_detail_item_img {
+    margin-top: 5px;
+}
+
+.course_detail_item_row {
+    width: 200px;
+    float: right;
+    margin-top: 7px;
+}
+
+.course_detail_item_row ion-col{
+    padding : 0;
+    color: $primary_color;
+}
+
+.course_detail_item_row span {
+    float : right;
+    line-height: 15px;
+}
+
+.course_detail_item_row ion-icon {
+    float : right;
+    line-height: 15px;
+    padding-right: 5px;
+}
+
+.course_detail_item_date{
+    float: right;
+    line-height: 40px;
+    color: #999;
+    margin-top: -40px;
+    font-size: 13px;
+}

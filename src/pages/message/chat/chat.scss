@@ -1,0 +1,28 @@
+@import "theme/variables";
+
+.chat_item {
+    margin-top: 20px;
+}
+
+.chat_item_header {
+    @extend .message_item_header;
+    margin-left: 8px;
+}
+
+.chat_item_content_container {
+    padding-left: 68px;
+    padding-right: 8px;
+}
+
+.chat_item_content_container .card{
+}
+
+.chat_item_header_right {
+    @extend .message_item_header;
+    right : 8px;
+}
+
+.chat_item_content_container_right {
+    padding-right: 68px;
+    padding-left: 8px;
+}

@@ -1,0 +1,30 @@
+<ion-header>
+
+	<ion-navbar color="primary">
+		<button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+		<ion-title class="yahei">
+			我的笔记
+		</ion-title>
+	</ion-navbar>
+
+</ion-header>
+<ion-content class="mycourse_content_color">
+	<ion-card *ngFor="let note of notes" (click)="showDetail(note)">
+		<ion-item>
+			<ion-avatar item-left>
+				<img src={{urlHeader}}{{note.headImage}}>
+			</ion-avatar>
+			<h2>{{note.name}}</h2>
+			<p>{{note.createDate}}</p>
+		</ion-item>
+	
+		<img *ngIf="note.imagePath && note.imagePath != ''" class="course_detail_item_img" src={{urlHeader}}{{note.imagePath}} />
+		<ion-card-content>
+			{{note.content}}
+		</ion-card-content>
+	
+	</ion-card>
+	
+</ion-content>

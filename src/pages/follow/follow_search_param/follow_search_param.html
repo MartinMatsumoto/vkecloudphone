@@ -1,0 +1,46 @@
+<ion-header>
+
+	<ion-navbar color="primary">
+		<ion-buttons left>
+			<button ion-button icon-only (click)="close()">
+				<ion-icon name="close"></ion-icon>
+			</button>
+		</ion-buttons>
+		<ion-title class="yahei">
+			搜索关注
+		</ion-title>
+		<ion-buttons end>
+			<button ion-button icon-only (click)="search()">
+		        <ion-icon name="checkmark"></ion-icon>
+		    </button>
+		</ion-buttons>
+	</ion-navbar>
+
+	<ion-toolbar color="white">
+		<ion-searchbar animated="true" cancelButtonText="取消" placeholder="请输入关键字" [(ngModel)]="keyword"></ion-searchbar>
+	</ion-toolbar>
+
+</ion-header>
+<ion-content class="course_search_content_container">
+		<ion-item *ngFor="let user of follows">
+			<img class="message_item_header" src={{urlHeader}}{{user.iconPath}} />
+			<div class="message_item_content_container">
+				<span class="yahei name">{{user.realName}}</span>
+				<br />
+				<span class="content yahei">{{user.organization}}</span>
+				<span class="content yahei">{{user.clazzName}}</span>
+			</div>
+			<button *ngIf="user.following" ion-button (click)="cancelFollow(user)" color="danger" clear item-right icon-left style="height:100%;margin:0px;">
+				<ion-icon name="remove-circle"></ion-icon>
+				取消关注
+			</button>
+			<button *ngIf="!user.following" ion-button (click)="addFollow(user)" color="green" clear item-right icon-left style="height:100%;margin:0px;">
+				<ion-icon name="heart"></ion-icon>
+				关注TA!
+			</button>
+		</ion-item>
+		<ion-infinite-scroll (ionInfinite)="loadFollows($event)">
+			<ion-infinite-scroll-content loadingSpinner="ios" loadingText="加载中，请稍等。">
+			</ion-infinite-scroll-content>
+		</ion-infinite-scroll>
+</ion-content>
